@@ -1,0 +1,39 @@
+extends master
+
+block content
+  .container(ng-controller="characterDetailController")
+    h2.v-left{{character.name}}
+    p
+      b origin///    {{character.origin.name}}
+    p
+      b publisher///  {{character.publisher.name}}
+    p
+    .row
+      .col-md-12
+        .com-md-4
+          img.pull-left(src="{{character.image.small_url}}" class="img-rounded" alt="Cinque Terre" width="304")
+        .col-md-8
+          p        
+            b Description/// {{character.deck}}
+          p
+          button.btn.btn-success(style="width: 100%",ng-click="toggleCast()") {{castBtnText || '+ enemies'}}
+          ul(ng-show="displayCast")
+            li(ng-repeat="cast in character.character_enemies")
+              a(href='/character/{{cast.id}}'){{cast.name}}
+              a.btn.btn-default(href="/character/{{character.id}}/versus/{{cast.id}}") Versus 
+
+          p
+          button.btn.btn-success(style="width: 100%",ng-click="toggleCast1()") {{castBtnText1 || '+ friends'}}
+          ul(ng-show="displayCast1")
+            li(ng-repeat="cast1 in character.character_friends")
+              a(href='/character/{{cast1.id}}'){{cast1.name}}
+          p
+          button.btn.btn-success(style="width: 100%",ng-click="toggleCast2()") {{castBtnText2 || '+ powers'}}
+          ul(ng-show="displayCast2")
+            li(ng-repeat="cast2 in character.powers")
+              {{cast2.name}}
+
+
+          
+
+    

@@ -1,0 +1,74 @@
+extends master
+
+block content
+  .container(ng-controller="versusController")
+
+    .row
+      .col-xs-5
+        h2.v-center {{character.mainDetail.name}}
+        p
+        b Origin: {{character.mainDetail.origin.name }}
+
+        p
+        b Publisher: {{character.mainDetail.publisher.name}}
+
+        p
+        b Description: {{character.mainDetail.deck}}
+
+         
+        img(src="{{character.mainDetail.image.small_url}}" , width="100%")
+        p
+        a.btn.btn-primary.pull-right(href="/character/{{character.mainDetail.id}}") Details
+        br
+        
+        b Powers:
+          li(ng-repeat="powers in characterpowers") {{powers.name}}
+        p
+
+        b Teams:
+          li(ng-repeat="teams in characterteams") {{teams.name}}
+        p
+
+        b Friends:
+          li(ng-repeat="friends in characterfriends") 
+            a.pull-center(style="width: 100%; margin-top: 10px", href="/character/{{friends.id}}") {{friends.name}}
+
+        p
+
+        b Enemies:
+          li(ng-repeat="enemies in characterenemies")  
+            a.pull-center(style="width: 100%; margin-top: 10px", href="/character/{{enemies.id}}") {{enemies.name}}
+        
+
+      .col-md-2
+
+      .col-md-5 
+        h2.v-center {{character.challengerDetail.name}}
+        p
+        b Origin: {{character.challengerDetail.origin.name}}
+        p
+        b Publisher: {{character.challengerDetail.publisher.name}}
+        p
+        b Description: {{character.challengerDetail.deck}}
+        p
+        img(src="{{character.challengerDetail.image.small_url}}" , width="100%")
+        p
+        a.btn.btn-primary.pull-right(href="/character/{{character.challengerDetail.id}}") Details
+        p
+      .col-xs-5.pull-right    
+          
+        
+        b  Powers:
+          li(color="red",ng-repeat="powers in characterchallengerpowers") {{powers.name}}
+        p
+        b Teams:
+          li(color="red",ng-repeat="teams in characterchallengerteams") {{teams.name}}
+        p
+        b Friends:
+          li(ng-repeat="friends in characterchallengerfriends") 
+            a.pull-center(style="width: 100%; margin-top: 10px", href="/character/{{friends.id}}") {{friends.name}}
+        p
+        b Enemies:
+          li(ng-repeat="enemies in characterchallengerenemies")  
+                a.pull-center(style="width: 100%; margin-top: 10px", href="/character/{{enemies.id}}") {{enemies.name}}
+             
